@@ -16,6 +16,7 @@ Components
    measured_boot/index
    mpmm
    platform-interrupt-controller-API
+   pmu-dvfs
    ras
    romlib-design
    sdei

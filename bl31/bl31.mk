@@ -50,6 +50,10 @@ ifeq (${ENABLE_PMF}, 1)
 BL31_SOURCES		+=	lib/pmf/pmf_main.c
 endif
 
+ifeq (${ENABLE_PMU_DVFS},1)
+BL31_SOURCES		+=	bl31/pmu_dvfs.c
+endif
+
 include lib/debugfs/debugfs.mk
 ifeq (${USE_DEBUGFS},1)
 	BL31_SOURCES	+= $(DEBUGFS_SRCS)
@@ -139,6 +143,7 @@ endif
 $(eval $(call assert_booleans,\
     $(sort \
 	CRASH_REPORTING \
+	ENABLE_PMU_DVFS \
 	EL3_EXCEPTION_HANDLING \
 	SDEI_SUPPORT \
 )))
@@ -146,6 +151,7 @@ $(eval $(call assert_booleans,\
 $(eval $(call add_defines,\
     $(sort \
         CRASH_REPORTING \
+	ENABLE_PMU_DVFS \
         EL3_EXCEPTION_HANDLING \
         SDEI_SUPPORT \
 )))
