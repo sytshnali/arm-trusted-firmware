@@ -12,6 +12,7 @@
 #include <arch_helpers.h>
 #include <bl31/bl31.h>
 #include <bl31/ehf.h>
+#include <bl31/pmu_dvfs.h>
 #include <common/bl_common.h>
 #include <common/debug.h>
 #include <common/runtime_svc.h>
@@ -131,6 +132,12 @@ void bl31_main(void)
 
 	/* Perform platform setup in BL31 */
 	bl31_platform_setup();
+
+#if ENABLE_PMU_DVFS
+	if (pmu_dvfs_global_init() == 0) {
+		pmu_dvfs_core_init();
+	}
+#endif
 
 	/* Initialise helper libraries */
 	bl31_lib_init();

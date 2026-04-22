@@ -108,6 +108,9 @@ ENABLE_PIE			:= 0
 # Flag to enable Performance Measurement Framework
 ENABLE_PMF			:= 0
 
+# Flag to enable PMU transaction-based DVFS helper in BL31
+ENABLE_PMU_DVFS			:= 0
+
 # Flag to enable PSCI STATs functionality
 ENABLE_PSCI_STAT		:= 0
 
